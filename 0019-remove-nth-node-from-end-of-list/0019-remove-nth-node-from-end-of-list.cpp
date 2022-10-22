@@ -1,44 +1,23 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int size = 0;
-        ListNode* curr = head;
-        while(curr != NULL){
-            size++;
-            curr = curr->next;
+        ListNode* slow=head, *fast = head;
+        
+        while(n>0){
+            fast = fast->next;
+            n--;
         }
         
-        if(size==1) return NULL;
-        if(size==n) return head->next;
+        if(fast==NULL) return head->next;
         
+        while(fast->next!=NULL){
+            fast = fast->next;
+            slow = slow->next;
+        }
         
-        int ith = size-n+1;
-        int curpos = 0;
-        curr = head;
-        ListNode* prev = NULL;
-        while(curr != NULL){
-            curpos++;
-            if(curpos==ith){
-                ListNode* temp = curr;
-                prev->next = curr->next;
-                delete temp;
-                break;
-            }
-            prev =  curr;
-            curr = curr->next;
-        }        
+        if(slow->next!=NULL)
+        slow->next = slow->next->next;        
         
         return head;
     }
 };
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
