@@ -5,32 +5,27 @@ public:
     {
 
         int n = s.size();
-        //<pos, true/false>
-        unordered_map<int, bool> v;
-        for (auto e : s)
-        {
-            v[e] = false;
-        }
-        // <pos, v<jumps>
-        unordered_map<int, unordered_set<int>> mpj;
-        mpj[s[0]] = {0};
-        v[s[0]] = true;
-        int c = 1;
+        vector<int> mem(n, false);
+        vector<set<int>> mpj(n);
+        mpj[0] = {0};
+        mem[0] = true;
+        int c = 0;
         for (auto i : s)
         {
-            for (auto j : mpj[i])
+            for (auto j : mpj[c])
             {
                 for (int k = -1; k <= 1; k++)
                 {
-                    if (j + k > 0 && v.find(i + j + k) != v.end())
+                    if (j + k > 0 && binary_search(s.begin(), s.end(), i+j+k))
                     {
-                        v[i + j + k] = true;
-                        mpj[i + j + k].insert(j + k);
+                        int idx = lower_bound(s.begin(), s.end(), i+j+k) - s.begin();
+                        mem[idx] = true;
+                        mpj[idx].insert(j + k);
                     }
                 }
             }
             c++;
         }
-        return v[s[n - 1]];
+        return mem[n-1];
     }
 };
