@@ -1,6 +1,8 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& v) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         int fluc = -1;
         int n = v.size();
         // find the fluctuatuin point
