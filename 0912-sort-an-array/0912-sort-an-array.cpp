@@ -36,9 +36,6 @@ public:
         }
     }
     vector<int> sortArray(vector<int>& nums) {
-        ios_base::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
         mergeSort(nums, 0, nums.size()-1);
         return nums;
     }
