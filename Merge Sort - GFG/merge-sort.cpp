@@ -22,34 +22,7 @@ class Solution
     void merge(int arr[], int l, int mid, int r)
     {
          // Your code here
-        int* ans =  new int[r-l+1];
-        int i = l, j = mid+1;
-        int p = 0;
-        while(i<=mid && j<=r){
-            if(arr[i]<=arr[j]){
-                ans[p]= arr[i];
-                i++;
-                p++;
-            }else{
-                ans[p]= arr[j];
-                j++;
-                p++;
-            }
-        }
-        while(i<=mid){
-            ans[p] = arr[i];
-            i++;
-            p++;
-        }
-        while(j<=r){
-            ans[p] = arr[j];
-            j++;
-            p++;
-        }
-        
-        for(int i=0;i<r-l+1;i++){
-            arr[l+i] = ans[i];
-        }
+ 
     }
     public:
     void mergeSort(int arr[], int l, int r)
@@ -59,7 +32,35 @@ class Solution
             int mid = (l+r)/2;
             mergeSort(arr, l, mid);
             mergeSort(arr, mid+1, r);
-            merge(arr, l, mid, r);
+            // merge(arr, l, mid, r);
+            int* ans =  new int[r-l+1];
+            int i = l, j = mid+1;
+            int p = 0;
+            while(i<=mid && j<=r){
+                if(arr[i]<=arr[j]){
+                    ans[p]= arr[i];
+                    i++;
+                    p++;
+                }else{
+                    ans[p]= arr[j];
+                    j++;
+                    p++;
+                }
+            }
+            while(i<=mid){
+                ans[p] = arr[i];
+                i++;
+                p++;
+            }
+            while(j<=r){
+                ans[p] = arr[j];
+                j++;
+                p++;
+            }
+            
+            for(int i=0;i<r-l+1;i++){
+                arr[l+i] = ans[i];
+            }
         }
     }
 };
