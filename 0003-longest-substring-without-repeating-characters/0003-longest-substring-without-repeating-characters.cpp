@@ -9,7 +9,7 @@ public:
         int n = s.size();
         
         int ans = 0;
-        set<char> st;
+        unordered_set<char> st;
         while(j<n){
             if(st.find(s[j])!=st.end()){
                 st.erase(s[i]);
