@@ -4,18 +4,20 @@ public:
         ios_base::sync_with_stdio(0);
         cin.tie(0);
         cout.tie(0);
-        int slow = v[0];
-        int fast = v[v[0]];
+        int slow = 0;
+        int fast = 0;
         
-        while(slow!=fast){
+        while(1){
             slow = v[slow];
             fast = v[v[fast]];
+            if(slow==fast) break;
         }
-        slow = 0;
+        
+        fast = 0;
         while(slow!=fast){
             slow = v[slow];
             fast = v[fast];
         }
-        return slow;        
+        return fast;        
     }
 };
