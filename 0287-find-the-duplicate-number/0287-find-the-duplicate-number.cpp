@@ -1,18 +1,21 @@
-// Tc -> O(n)  Sc->O(n || 10^5)
 class Solution {
 public:
     int findDuplicate(vector<int>& v) {
         ios_base::sync_with_stdio(0);
         cin.tie(0);
         cout.tie(0);
-        vector<int> mp(1e5+1, 0);
-        for(auto e: v){
-            mp[e]++;
-            if(mp[e]>1){
-                return e;
-            }
-        }
+        int slow = v[0];
+        int fast = v[v[0]];
         
-        return -1;
+        while(slow!=fast){
+            slow = v[slow];
+            fast = v[v[fast]];
+        }
+        slow = 0;
+        while(slow!=fast){
+            slow = v[slow];
+            fast = v[fast];
+        }
+        return slow;        
     }
 };
