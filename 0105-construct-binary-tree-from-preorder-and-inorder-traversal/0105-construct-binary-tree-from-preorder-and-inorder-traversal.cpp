@@ -1,5 +1,6 @@
 class Solution {
     TreeNode* solve(vector<int>preorder, vector<int>inorder){
+        
         vector<int> inleft, preleft, inright, preright;
         if(preorder.size()==0) return NULL;
 
@@ -38,6 +39,9 @@ class Solution {
     }
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         return solve(preorder, inorder);
     }
 };
