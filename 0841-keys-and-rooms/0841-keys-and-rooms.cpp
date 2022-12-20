@@ -7,23 +7,14 @@ class Solution {
         }
     }
 public:
-    bool canVisitAllRooms(vector<vector<int>>& r) {
-        int n  = r.size();
-        vector<vector<int>> g(n);
-        for(int i=0; i<r.size(); i++){
-            for(int j=0; j<r[i].size(); j++){
-                g[i].push_back(r[i][j]);
-            }
-        }
-        vector<bool> vis(n, false);
+    bool canVisitAllRooms(vector<vector<int>>& g) {
+        vector<bool> vis(g.size(), false);
         dfs(0, vis, g);
-        bool ans  = true;
-        for(int i=0; i<n; i++){
+        for(int i=0; i<g.size(); i++){
             if(vis[i]==false){
-                ans = false;
-                break;
+                return false;
             }
         }
-        return ans;
+        return true;
     }
 };
