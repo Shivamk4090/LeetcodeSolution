@@ -22,6 +22,9 @@ class Solution {
     }
 public:
     int minDepth(TreeNode* root) {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
         if(root==NULL) return 0;
         dfs(root, 1);
         return ans;
