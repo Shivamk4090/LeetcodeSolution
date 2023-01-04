@@ -1,8 +1,11 @@
+#include<algorithm>
 class Solution {
 public:
     int minimumRounds(vector<int>& tasks) {
         ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-        vector<int> dp(1e5+1, 0);
+        int n = tasks.size()+1;
+        n = max(5, n);
+        vector<int> dp(n, 0);
         dp[2] = 1;
         dp[3] = 1;
         dp[4] = 2;
